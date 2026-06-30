@@ -1,0 +1,66 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Curtis Bradley — Software Engineer',
+  description = 'Portfolio of Curtis Bradley, Computer Science student at Cal Poly SLO specializing in full-stack development and data science.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body class="bg-[#0f172a] text-slate-200 min-h-screen">
+
+    <!-- Navigation -->
+    <header class="fixed top-0 inset-x-0 z-50 bg-[#0f172a]/90 backdrop-blur border-b border-slate-800">
+      <nav class="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
+        <ul class="hidden sm:flex items-center gap-6 text-sm text-slate-400">
+          <li><a href="#about"    class="hover:text-sky-400 transition-colors">About</a></li>
+          <li><a href="#skills"   class="hover:text-sky-400 transition-colors">Skills</a></li>
+          <li><a href="#projects" class="hover:text-sky-400 transition-colors">Projects</a></li>
+          <li><a href="#experience" class="hover:text-sky-400 transition-colors">Experience</a></li>
+          <li><a href="#education" class="hover:text-sky-400 transition-colors">Education</a></li>
+        </ul>
+        <a
+          href="https://github.com/curtisjbradley"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm text-sky-400 border border-sky-400 px-3 py-1 rounded hover:bg-sky-400 hover:text-[#0f172a] transition-all"
+        >
+          GitHub
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 py-8 mt-24">
+      <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500">
+        <p>© 2026 Curtis Bradley</p>
+        <div class="flex items-center gap-5">
+          <a href="https://github.com/curtisjbradley" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition-colors">GitHub</a>
+          <a href="https://www.linkedin.com/in/curtis-bradley/" target="_blank" rel="noopener noreferrer" class="hover:text-sky-400 transition-colors">LinkedIn</a>
+          <a href="mailto:curtisbradley822@gmail.com" class="hover:text-sky-400 transition-colors">Email</a>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

@@ -1,0 +1,54 @@
+---
+const education = [
+  {
+    school: 'California Polytechnic State University, San Luis Obispo',
+    degree: 'Bachelor of Science in Computer Science',
+    minor: 'Minor in Statistics',
+    period: 'Expected Aug 2026',
+    location: 'San Luis Obispo, CA',
+  },
+  {
+    school: 'Cuesta College',
+    degree: 'Associate in Science in Computer Science',
+    minor: null,
+    period: 'May 2024',
+    location: 'San Luis Obispo, CA',
+  },
+];
+
+const awards = [
+  'Eagle Scout, Boy Scouts of America (Sept 2019)',
+];
+---
+
+<section id="education" class="py-24 bg-slate-900/30">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-white mb-2">Education</h2>
+    <div class="w-12 h-1 bg-sky-400 mb-12 rounded"></div>
+
+    <div class="grid sm:grid-cols-2 gap-6 mb-12">
+      {education.map((edu) => (
+        <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 hover:border-sky-400/50 transition-colors">
+          <p class="text-sky-400 text-xs font-mono uppercase tracking-widest mb-2">{edu.period}</p>
+          <h3 class="text-white font-bold text-lg leading-snug mb-1">{edu.school}</h3>
+          <p class="text-slate-300 text-sm">{edu.degree}</p>
+          {edu.minor && <p class="text-slate-400 text-sm">{edu.minor}</p>}
+          <p class="text-slate-500 text-xs mt-2">{edu.location}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Awards -->
+    <div>
+      <h3 class="text-white font-bold text-xl mb-4">Awards</h3>
+      <ul class="space-y-2">
+        {awards.map((award) => (
+          <li class="flex gap-2 text-slate-400 text-sm">
+            <span class="text-sky-400 shrink-0">▸</span>
+            <span>{award}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

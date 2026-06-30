@@ -1,0 +1,158 @@
+---
+import { getTagClasses } from '../lib/tagColors';
+
+const projects = [
+  {
+    title: 'Mock Scores',
+    subtitle: 'Full-Stack Tournament Scoring Platform',
+    date: 'Apr 2026',
+    description: 'A web app I built to handle scoring and tabulation for San Luis Obispo County\'s high school mock trial competitions. Tournament organizers use it to manage events, and coaches can check official results in real time.',
+    bullets: [
+      'Set up CI/CD with GitHub Actions, Jest, and Cypress so every push gets tested before it ships.',
+        'Made end to end tests to ensure functionality.',
+        'Created the site in an AWS environment using EC2, Route 53, SES, and SNS.'
+    ],
+    tags: ['React', 'TypeScript', 'PostgreSQL', 'Express', 'GitHub Actions', 'Jest', 'Cypress'],
+    github: 'https://github.com/curtisjbradley/Mock-Scores',
+    live: 'https://www.mockscores.org',
+    featured: true,
+  },
+  {
+    title: 'Prostate Cancer Discriminant Analysis',
+    subtitle: 'Statistical ML Report',
+    date: 'Jun 2026',
+    description: 'Built an LDA classification model to predict prostate cancer stage from clinical data, hitting 80% accuracy on the project dataset.',
+    bullets: [
+      'Followed rigorous statistical practices for model selection, validation, and interpretation.',
+      'Wrote a fully reproducible Quarto/R report so the analysis can be re-run and verified end-to-end.',
+    ],
+    tags: ['R', 'Quarto', 'LDA', 'Machine Learning'],
+    github: 'https://github.com/arochaja2/STAT419-Cancer-Data',
+    live: null,
+    report: '/Prostate Report.pdf',
+    featured: true,
+  },
+  {
+    title: 'Conference Event Extractor',
+    subtitle: 'NLP / Information Extraction',
+    date: 'Mar 2026',
+    description: 'Fine-tuned a BERT model to pull structured details — dates, locations, titles — out of conference emails, then wrapped it in a small Flask web interface.',
+    bullets: [
+      'Reached an F1 score of 0.77 on the held-out test set.',
+      'Built the front-end interface to let users paste an email and get structured output back instantly.',
+    ],
+    tags: ['Python', 'Machine Learning', 'Scikit-learn', 'SQL'],
+    github: null,
+    live: 'https://drive.google.com/file/d/1CZigk4G4OnBHtSHIkKwOHbb_z_1CqdrF/view?resourcekey',
+    report: '/Event Extractor.pdf',
+    featured: false,
+  },
+  {
+    title: 'BoxFish',
+    subtitle: 'Game AI — Dots and Boxes',
+    date: 'Aug 2025',
+    description: 'A Java project where I implemented AI agents that play Dots and Boxes, complete with a UI so you can actually play against them.',
+    bullets: [
+      'Implemented Alpha-Beta Pruning and Monte Carlo Tree Search and compared their performance across board sizes.',
+      'Added JUnit tests wired into CI so regressions get caught automatically.',
+    ],
+    tags: ['Java', 'Alpha-Beta Pruning', 'MCTS', 'AI'],
+    github: 'https://github.com/curtisjbradley/BoxFish-Parallel',
+    live: null,
+    featured: false,
+  },
+  {
+    title: 'Ecommerce Pro',
+    subtitle: 'Full-Stack E-Commerce Platform',
+    date: 'Sep 2024',
+    description: 'A full-stack e-commerce app built with a small team — users can browse and purchase items, and admins get a dashboard to manage products and permissions.',
+    bullets: [
+      'Built the permissions dashboard so admins can control role-based access without touching code.',
+      'Integrated Azure CDN to serve product images quickly and give sellers a customizable storefront.',
+    ],
+    tags: ['React', 'JavaScript', 'MongoDB', 'Express', 'GitHub Actions', 'Jest', 'Cypress', 'Azure'],
+    github: 'https://github.com/phillip-niakoulov/E-SHOP-PRO',
+    live: 'https://youtu.be/at-OGoaI2so',
+    featured: false,
+  },
+  {
+    title: 'Gene Expression Clustering',
+    subtitle: 'Bioinformatics',
+    date: 'Feb 2026',
+    description: 'Cluster analysis on yeast gene expression data to identify which genes coordinate during metabolic shifts — specifically the diauxic shift in wine-making yeast.',
+    bullets: [
+      'Did exploratory data analysis to understand the structure of the expression data before modeling.',
+      'Identified gene clusters tied to the diauxic shift and wrote up the findings in a LaTeX report.',
+    ],
+    tags: ['Python', 'Scikit-learn', 'LaTeX', 'Pandas'],
+    github: null,
+    live: null,
+    report: '/Expression Clustering.pdf',
+    featured: false,
+  },
+];
+---
+
+<section id="projects" class="py-24 bg-slate-900/30">
+  <div class="max-w-5xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-white mb-2">Projects</h2>
+    <div class="w-12 h-1 bg-sky-400 mb-12 rounded"></div>
+
+    <div class="grid gap-6 sm:grid-cols-2">
+      {projects.map((project) => (
+        <article
+          class:list={[
+            'bg-slate-800/50 border rounded-xl p-6 flex flex-col gap-4 hover:border-sky-400/60 transition-colors',
+            project.featured ? 'border-sky-400/40 sm:col-span-2' : 'border-slate-700',
+          ]}
+        >
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              {project.featured && (
+                <p class="text-sky-400 text-xs font-mono uppercase tracking-widest mb-1">Featured Project</p>
+              )}
+              <h3 class="text-white font-bold text-xl">{project.title}</h3>
+              <p class="text-slate-400 text-sm">{project.subtitle} · {project.date}</p>
+            </div>
+            <div class="flex items-center gap-3 shrink-0 text-slate-400">
+              {project.report && (
+                <a href={project.report} target="_blank" rel="noopener noreferrer" aria-label={`Report: ${project.title}`} class="hover:text-sky-400 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                </a>
+              )}
+              {project.github && (
+                <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`GitHub: ${project.title}`} class="hover:text-sky-400 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+              )}
+              {project.live && (
+                <a href={project.live} target="_blank" rel="noopener noreferrer" aria-label={`Live site: ${project.title}`} class="hover:text-sky-400 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              )}
+            </div>
+          </div>
+
+          <p class="text-slate-400 text-sm leading-relaxed">{project.description}</p>
+
+          <ul class="space-y-1">
+            {project.bullets.map((b) => (
+              <li class="text-slate-400 text-sm flex gap-2">
+                <span class="text-sky-400 mt-0.5 shrink-0">▸</span>
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="flex flex-wrap gap-2 mt-auto pt-2">
+            {project.tags.map((tag) => (
+              <span class:list={['text-xs font-mono px-2.5 py-0.5 rounded-full border', getTagClasses(tag)]}>
+                {tag}
+              </span>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
